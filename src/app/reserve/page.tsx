@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { Suspense, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -27,6 +27,14 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export default function ReservePage() {
+  return (
+    <Suspense fallback={<div className="w-full max-w-md mx-auto p-4">로딩중...</div>}>
+      <ReserveContent />
+    </Suspense>
+  );
+}
+
+function ReserveContent() {
   const params = useSearchParams();
   const router = useRouter();
   const { toast } = useToast();
