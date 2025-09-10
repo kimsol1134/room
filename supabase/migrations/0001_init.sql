@@ -34,7 +34,7 @@ alter table public.reservations disable row level security;
 
 -- DUMMY DATA FOR meeting_rooms
 insert into public.meeting_rooms (name, location, capacity) values
-('급식룡', '2층 서측', 10),
+('급식룸', '2층 서측', 10),
 ('나폴리룸', '3층 남측', 4),
 ('돌아이룸', '1층 동측', 6)
 on conflict do nothing;
